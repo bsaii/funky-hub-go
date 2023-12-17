@@ -7,6 +7,10 @@ FROM golang:buster as builder
 # Create and change to the app directory.
 WORKDIR /app
 
+# Set environment variable with a default value
+ARG DB_URL=''
+ENV DB_URL=$DB_URL
+
 # Retrieve application dependencies.
 # This allows the container build to reuse cached dependencies.
 # Expecting to copy go.mod and if present go.sum.
